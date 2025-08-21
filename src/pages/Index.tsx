@@ -10,16 +10,18 @@ import Footer from "@/components/Footer";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 font-open-sans">
+    <div className="min-h-screen font-open-sans">
       <Header />
       <HeroSection />
-      <AboutSection />
-      <PortfolioSection />
-      <SkillsSection />
-      <EducationSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <Footer />
+      <div className="bg-gradient-to-br from-slate-50 to-blue-50">
+        <AboutSection />
+        <PortfolioSection />
+        <SkillsSection />
+        <EducationSection />
+        <TestimonialsSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 }
