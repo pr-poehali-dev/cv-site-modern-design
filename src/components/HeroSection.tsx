@@ -18,12 +18,16 @@ export default function HeroSection() {
         {/* Large Profile Photo */}
         <div className="mb-8">
           <div className="relative inline-block">
-            <img 
-              src="/img/e9a5bf2e-ca94-42fe-bcc2-6ba5c166a61f.jpg" 
-              alt="Раиса Ильинская" 
-              className="w-48 h-48 rounded-full object-cover border-4 border-orange-300 shadow-2xl"
-            />
-            <div className="absolute inset-0 rounded-full ring-4 ring-orange-300/50"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-400 via-orange-400 to-yellow-600 p-2">
+              <div className="w-full h-full rounded-full bg-slate-900 p-1">
+                <img 
+                  src="/img/e9a5bf2e-ca94-42fe-bcc2-6ba5c166a61f.jpg" 
+                  alt="Раиса Ильинская" 
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="w-48 h-48"></div>
           </div>
         </div>
         
@@ -31,11 +35,13 @@ export default function HeroSection() {
         <h1 className="text-4xl md:text-5xl font-inter font-bold mb-2">
           Раиса Ильинская
         </h1>
-        <p className="text-xl text-orange-300 mb-12">
+        <p className="text-xl text-orange-400 mb-32">
           Ворожея
         </p>
-        
-        {/* CTA Button */}
+      </div>
+      
+      {/* Bottom Button */}
+      <div className="absolute bottom-8 left-0 right-0 text-center z-10">
         <Button 
           size="lg" 
           className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-lg font-medium tracking-wide"
