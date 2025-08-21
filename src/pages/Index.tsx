@@ -41,12 +41,21 @@ export default function Index() {
       <header className="sticky top-0 bg-white/80 backdrop-blur-md border-b border-slate-200 z-10">
         <div className="container mx-auto px-6 py-4">
           <nav className="flex justify-between items-center">
-            <div className="text-xl font-inter font-bold text-slate-800">
-              Алексей Козлов
+            <div className="flex items-center gap-3">
+              <img 
+                src="/img/2151a7bb-320a-42b4-ab62-3ac2436321c8.jpg" 
+                alt="Алексей Козлов" 
+                className="w-10 h-10 rounded-full object-cover"
+              />
+              <div className="text-xl font-inter font-bold text-slate-800">
+                Алексей Козлов
+              </div>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#about" className="text-slate-600 hover:text-primary transition-colors">Обо мне</a>
               <a href="#skills" className="text-slate-600 hover:text-primary transition-colors">Навыки</a>
+              <a href="#portfolio" className="text-slate-600 hover:text-primary transition-colors">Портфолио</a>
+              <a href="#education" className="text-slate-600 hover:text-primary transition-colors">Образование</a>
               <a href="#testimonials" className="text-slate-600 hover:text-primary transition-colors">Отзывы</a>
               <a href="#contact" className="text-slate-600 hover:text-primary transition-colors">Контакты</a>
             </div>
@@ -58,13 +67,15 @@ export default function Index() {
       <section className="py-20 px-6">
         <div className="container mx-auto text-center">
           <div className="mb-8">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white text-4xl">
-              👨‍💻
-            </div>
-            <h1 className="text-5xl md:text-6xl font-inter font-bold text-slate-800 mb-4">
+            <img 
+              src="/img/2151a7bb-320a-42b4-ab62-3ac2436321c8.jpg" 
+              alt="Алексей Козлов" 
+              className="w-32 h-32 mx-auto mb-6 rounded-full object-cover shadow-xl ring-4 ring-primary/20"
+            />
+            <h1 className="text-5xl md:text-6xl font-inter font-bold text-slate-800 mb-4 animate-fade-in">
               Алексей Козлов
             </h1>
-            <p className="text-xl text-slate-600 mb-6">
+            <p className="text-xl text-slate-600 mb-6 animate-fade-in-up">
               Full-Stack Developer & UI/UX Enthusiast
             </p>
             <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -143,8 +154,87 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-16 px-6 bg-slate-50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-inter font-bold text-center text-slate-800 mb-12">
+            Мои проекты
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {[
+              {
+                title: "E-commerce платформа",
+                description: "Современный интернет-магазин с React и Node.js",
+                tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
+                image: "🛒",
+                status: "Завершен"
+              },
+              {
+                title: "Мобильное приложение для фитнеса",
+                description: "React Native приложение с трекингом тренировок",
+                tech: ["React Native", "Firebase", "Redux"],
+                image: "💪",
+                status: "В разработке"
+              },
+              {
+                title: "Система управления проектами",
+                description: "Корпоративная CRM система для управления задачами",
+                tech: ["Vue.js", "Python", "Django", "Docker"],
+                image: "📊",
+                status: "Завершен"
+              },
+              {
+                title: "AI-чатбот для поддержки",
+                description: "Интеллектуальный ассистент с обработкой NLP",
+                tech: ["Python", "TensorFlow", "FastAPI"],
+                image: "🤖",
+                status: "MVP готов"
+              },
+              {
+                title: "Платформа для онлайн-обучения",
+                description: "Образовательная платформа с видео-курсами",
+                tech: ["Next.js", "Prisma", "AWS"],
+                image: "🎓",
+                status: "Завершен"
+              },
+              {
+                title: "Криптовалютный трекер",
+                description: "Real-time мониторинг криптовалют с аналитикой",
+                tech: ["React", "WebSocket", "Chart.js"],
+                image: "₿",
+                status: "Завершен"
+              }
+            ].map((project, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-2">
+                <CardContent className="p-6">
+                  <div className="text-4xl mb-4 text-center">{project.image}</div>
+                  <div className="flex justify-between items-start mb-3">
+                    <Badge 
+                      variant={project.status === "Завершен" ? "default" : "secondary"}
+                      className="text-xs"
+                    >
+                      {project.status}
+                    </Badge>
+                    <Icon name="ExternalLink" className="text-slate-400 group-hover:text-primary transition-colors" size={16} />
+                  </div>
+                  <h3 className="font-inter font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm mb-4 leading-relaxed">{project.description}</p>
+                  <div className="flex flex-wrap gap-1">
+                    {project.tech.map(tech => (
+                      <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Skills Section */}
-      <section id="skills" className="py-16 px-6 bg-slate-50">
+      <section id="skills" className="py-16 px-6 bg-white">
         <div className="container mx-auto">
           <h2 className="text-3xl font-inter font-bold text-center text-slate-800 mb-12">
             Навыки и технологии
@@ -191,6 +281,88 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Education & Certificates Section */}
+      <section id="education" className="py-16 px-6 bg-slate-50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-inter font-bold text-center text-slate-800 mb-12">
+            Образование и сертификаты
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Education */}
+              <div>
+                <h3 className="text-xl font-inter font-semibold mb-6 flex items-center gap-2">
+                  <Icon name="GraduationCap" className="text-primary" size={24} />
+                  Образование
+                </h3>
+                <div className="space-y-6">
+                  <Card className="p-6">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-semibold">Московский Технический Университет</h4>
+                      <span className="text-sm text-slate-500">2018-2022</span>
+                    </div>
+                    <p className="text-primary font-medium mb-1">Бакалавр информатики</p>
+                    <p className="text-slate-600 text-sm">Специализация: Разработка ПО, с отличием</p>
+                  </Card>
+                  <Card className="p-6">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-semibold">Дополнительное образование</h4>
+                      <span className="text-sm text-slate-500">2022-2023</span>
+                    </div>
+                    <p className="text-primary font-medium mb-1">Fullstack JavaScript</p>
+                    <p className="text-slate-600 text-sm">Интенсивный курс по современной веб-разработке</p>
+                  </Card>
+                </div>
+              </div>
+              
+              {/* Certificates */}
+              <div>
+                <h3 className="text-xl font-inter font-semibold mb-6 flex items-center gap-2">
+                  <Icon name="Award" className="text-primary" size={24} />
+                  Сертификаты
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    "AWS Certified Developer - Associate",
+                    "Google Cloud Professional Developer",
+                    "MongoDB Certified Developer",
+                    "Meta React Developer Certificate",
+                    "Docker Certified Associate"
+                  ].map((cert, index) => (
+                    <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-lg border">
+                      <Icon name="CheckCircle" className="text-green-500" size={20} />
+                      <span className="text-slate-700">{cert}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            {/* Interests & Hobbies */}
+            <div className="mt-12">
+              <h3 className="text-xl font-inter font-semibold mb-6 text-center flex items-center justify-center gap-2">
+                <Icon name="Heart" className="text-primary" size={24} />
+                Интересы и хобби
+              </h3>
+              <div className="grid md:grid-cols-4 gap-6">
+                {[
+                  { icon: "🚀", title: "Космические технологии", desc: "Слежу за SpaceX и новостями космоса" },
+                  { icon: "📚", title: "Техническая литература", desc: "Читаю книги по архитектуре ПО" },
+                  { icon: "🎸", title: "Музыка", desc: "Играю на гитаре в свободное время" },
+                  { icon: "🏃", title: "Бег", desc: "Регулярные пробежки для здоровья" }
+                ].map((hobby, index) => (
+                  <Card key={index} className="p-4 text-center hover:shadow-lg transition-shadow">
+                    <div className="text-3xl mb-2">{hobby.icon}</div>
+                    <h4 className="font-medium mb-1">{hobby.title}</h4>
+                    <p className="text-sm text-slate-600">{hobby.desc}</p>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section id="testimonials" className="py-16 px-6 bg-white">
         <div className="container mx-auto">
@@ -223,54 +395,142 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-16 px-6 bg-slate-900 text-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-inter font-bold mb-8">
-            Готов к сотрудничеству?
+      {/* Contact Form Section */}
+      <section id="contact" className="py-16 px-6 bg-slate-50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-inter font-bold text-center text-slate-800 mb-12">
+            Свяжитесь со мной
           </h2>
-          <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            Давайте обсудим ваш проект и найдем лучшее решение для ваших задач
-          </p>
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
-                <Icon name="Mail" className="text-white" size={24} />
-              </div>
-              <h3 className="font-inter font-semibold mb-2">Email</h3>
-              <p className="text-slate-300">alexey.kozlov@email.com</p>
-            </div>
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <Card className="p-8">
+              <h3 className="text-xl font-inter font-semibold mb-6">Отправить сообщение</h3>
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Имя</label>
+                    <input 
+                      type="text" 
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      placeholder="Ваше имя"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                    <input 
+                      type="email" 
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Тема</label>
+                  <input 
+                    type="text" 
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    placeholder="Тема сообщения"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Сообщение</label>
+                  <textarea 
+                    rows={6}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                    placeholder="Расскажите о вашем проекте..."
+                  ></textarea>
+                </div>
+                <Button size="lg" className="w-full">
+                  <Icon name="Send" className="mr-2" size={20} />
+                  Отправить сообщение
+                </Button>
+              </form>
+            </Card>
             
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
-                <Icon name="Phone" className="text-white" size={24} />
+            {/* Contact Info */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-inter font-semibold mb-6">Контактная информация</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Icon name="Mail" className="text-primary" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Email</h4>
+                      <p className="text-slate-600">alexey.kozlov@email.com</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Icon name="Phone" className="text-primary" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Телефон</h4>
+                      <p className="text-slate-600">+7 (999) 123-45-67</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Icon name="MapPin" className="text-primary" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Локация</h4>
+                      <p className="text-slate-600">Москва, Россия</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-white rounded-lg border">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Icon name="Clock" className="text-primary" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Время работы</h4>
+                      <p className="text-slate-600">Пн-Пт: 9:00 - 18:00 MSK</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h3 className="font-inter font-semibold mb-2">Телефон</h3>
-              <p className="text-slate-300">+7 (999) 123-45-67</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary flex items-center justify-center">
-                <Icon name="MapPin" className="text-white" size={24} />
-              </div>
-              <h3 className="font-inter font-semibold mb-2">Локация</h3>
-              <p className="text-slate-300">Москва, Россия</p>
+              
+              <Card className="p-6 bg-gradient-to-br from-primary to-blue-600 text-white">
+                <h4 className="font-inter font-semibold mb-2">Готов начать проект?</h4>
+                <p className="text-blue-100 mb-4">Обычно отвечаю в течение 24 часов</p>
+                <div className="flex gap-3">
+                  <Button variant="secondary" size="sm">
+                    <Icon name="Github" className="mr-2" size={16} />
+                    GitHub
+                  </Button>
+                  <Button variant="secondary" size="sm">
+                    <Icon name="Linkedin" className="mr-2" size={16} />
+                    LinkedIn
+                  </Button>
+                </div>
+              </Card>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* Final CTA Section */}
+      <section className="py-16 px-6 bg-slate-900 text-white">
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl font-inter font-bold mb-4">
+            Давайте создадим что-то великое вместе!
+          </h2>
+          <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+            Готов воплотить ваши идеи в жизнь с помощью современных технологий
+          </p>
+          
           <div className="flex justify-center gap-6">
             <Button variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-slate-900">
-              <Icon name="Github" className="mr-2" size={20} />
-              GitHub
-            </Button>
-            <Button variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-slate-900">
-              <Icon name="Linkedin" className="mr-2" size={20} />
-              LinkedIn
+              <Icon name="Download" className="mr-2" size={20} />
+              Скачать CV
             </Button>
             <Button size="lg">
-              <Icon name="Send" className="mr-2" size={20} />
-              Написать
+              <Icon name="ArrowUp" className="mr-2" size={20} />
+              Наверх
             </Button>
           </div>
         </div>
